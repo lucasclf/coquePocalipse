@@ -63,7 +63,7 @@ public class ControlaJogador : MonoBehaviour
 
     void reiniciaJogo(){
         if(vivo == false && Input.GetButtonDown("Fire1")){
-            SceneManager.LoadScene("game");
+            SceneManager.LoadScene("Menu");
             Time.timeScale = 1;
         }
     }
