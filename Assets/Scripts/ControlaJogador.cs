@@ -35,8 +35,10 @@ public class ControlaJogador : MonoBehaviour
     
     void movimento(){
 
-        rigidbodyJogador.MovePosition
-        (rigidbodyJogador.position + direcao * Velocidade * Time.deltaTime);
+        //rigidbodyJogador.MovePosition
+        //(rigidbodyJogador.position + direcao * Velocidade * Time.deltaTime);
+
+        rigidbodyJogador.velocity = direcao.normalized * Velocidade;
 
         if(direcao != Vector3.zero){
             animatorJogador.SetBool("Movendo", true);
