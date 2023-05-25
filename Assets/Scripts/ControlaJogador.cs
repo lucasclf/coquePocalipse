@@ -8,10 +8,11 @@ public class ControlaJogador : MonoBehaviour
     public float Velocidade = 10;
     public LayerMask MascaraChao;
     public GameObject TextoGameOver;
-    public bool vivo = true;
     private Vector3 direcao;
     private Rigidbody rigidbodyJogador;
     private Animator animatorJogador;
+    public int Vida = 100;
+    public ControlaInterface ScriptInterface; 
 
     void Start(){
         rigidbodyJogador = GetComponent<Rigidbody>();
@@ -34,9 +35,6 @@ public class ControlaJogador : MonoBehaviour
     }
     
     void movimento(){
-
-        //rigidbodyJogador.MovePosition
-        //(rigidbodyJogador.position + direcao * Velocidade * Time.deltaTime);
 
         rigidbodyJogador.velocity = direcao.normalized * Velocidade;
 
@@ -64,9 +62,19 @@ public class ControlaJogador : MonoBehaviour
     }
 
     void reiniciaJogo(){
-        if(vivo == false && Input.GetButtonDown("Fire1")){
+        if(Vida <= 0 && Input.GetButtonDown("Fire1")){
             SceneManager.LoadScene("Menu");
             Time.timeScale = 1;
+        }
+    }
+
+    public void TomarDano(int dano){
+        Vida -= dano;
+        ScriptInterface.AtualizarSlideVidaJogador();
+
+        if(Vida <= 0){
+            Time.timeScale = 0;
+            TextoGameOver.SetActive(true); 
         }
     }
 }
