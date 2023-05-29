@@ -1,7 +1,6 @@
 # coquePocalipse
-Repositório criado para o jogo de apocalipse zumbi em Unity
+Repositório criado para o jogo de apocalipse zumbi em Unity.
+Jogo hospedado atualmente em https://lcqn.itch.io/apocalipse-coquenao
 
 ## Créditos
-Musicas:
-    
-    - Crypt_of_Stan - https://teknoaxe.com/Link_Code_3.php?q=690&genre=Horror
+Jogo criado com base no curso da Alura: https://cursos.alura.com.br/course/criacao-de-jogos-com-unity

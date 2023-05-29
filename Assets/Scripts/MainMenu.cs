@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public static bool sound = true;
+    public static bool sound = false;
     public Text SoundText;
     public AudioClip somTiro;
     public void PlayGame(){
