@@ -19,3 +19,9 @@
 ## [1.1.0] | 2023-05-29
 ### Added
 - Inserção de audio.
+
+## [1.1.1] | 2023-05-29
+### Added
+- Inserção de audio de game over.
+### Changed
+- Alteração do audio de jogo para um som mais baixo e amigavel.

@@ -14,6 +14,7 @@ public class ControlaJogador : MonoBehaviour
     public int Vida = 100;
     public ControlaInterface ScriptInterface; 
     public AudioClip SomDano;
+    public AudioClip SomGameOver;
 
     void Start(){
         rigidbodyJogador = GetComponent<Rigidbody>();
@@ -46,7 +47,6 @@ public class ControlaJogador : MonoBehaviour
         }
     }
 
-
     void rotacao(){
         Ray raio = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(raio.origin, raio.direction *100, Color.red);
@@ -75,8 +75,11 @@ public class ControlaJogador : MonoBehaviour
 
         ControlaAudio.instanciaControleAudio.PlayOneShot(SomDano);
         if(Vida <= 0){
-            Time.timeScale = 0;
-            TextoGameOver.SetActive(true); 
+            Time.timeScale = 0; 
+            AudioSource audio = ControlaAudio.instanciaControleAudio.GetComponent<AudioSource>();
+            audio.clip = SomGameOver;
+            audio.Play();
+            TextoGameOver.SetActive(true);
         }
     }
 }
