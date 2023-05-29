@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ControlaBala : MonoBehaviour
 {
     public float Velocidade = 20;
+    public AudioClip SomMorteZumbi;
     private Rigidbody rigidbodyBala;
     // Update is called once per frame
     void Start(){
@@ -17,6 +19,7 @@ public class ControlaBala : MonoBehaviour
 
     void OnTriggerEnter(Collider objetoDeColisao){
         if(objetoDeColisao.tag == "Inimigo"){
+            ControlaAudio.instanciaControleAudio.PlayOneShot(SomMorteZumbi);
             Destroy(objetoDeColisao.gameObject);
         }
         

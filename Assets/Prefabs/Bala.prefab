@@ -56,7 +56,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9accf0d18f640f049a76d375ae9b58f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 20
+  Velocidade: 20
+  SomMorteZumbi: {fileID: 8300000, guid: 026ced08a1c994d4cb4074bb13686f31, type: 3}
 --- !u!23 &4440295621768592797
 MeshRenderer:
   m_ObjectHideFlags: 0

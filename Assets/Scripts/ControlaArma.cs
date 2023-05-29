@@ -6,9 +6,11 @@ public class ControlaArma : MonoBehaviour
 {
     public GameObject Bala;
     public GameObject CanoDaArma;
-    public float delta = 0.5F;
+    public float Delta = 0.5F;
+    public AudioClip SomTiro;
     private float proximoTiro = 10F;
     private float tempoInicial = 0.0F;
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,12 +19,13 @@ public class ControlaArma : MonoBehaviour
     }
 
     void FixedUpdate(){
-        tempoInicial = tempoInicial + delta;
+        tempoInicial = tempoInicial + Delta;
     }
     // Update is called once per frame
     void Update(){
         if(Input.GetButton("Fire1")){
             if(tempoInicial > proximoTiro) {
+                ControlaAudio.instanciaControleAudio.PlayOneShot(SomTiro);
                 atirar();
             }
         }
