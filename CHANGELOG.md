@@ -25,3 +25,9 @@
 - Inserção de audio de game over.
 ### Changed
 - Alteração do audio de jogo para um som mais baixo e amigavel.
+
+## [1.2.0] | 2023-05-30
+### Added
+- Iluminação.
+### Changed
+- Aumentado o tamanho do cenário.
