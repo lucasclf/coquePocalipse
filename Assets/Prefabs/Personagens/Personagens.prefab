@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1056943225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1056943226}
+  m_Layer: 0
+  m_Name: CanoDaArma
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1056943226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056943225}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.059, y: 2.16, z: 1.844}
+  m_LocalScale: {x: 2.1676648, y: 2.1676648, z: 2.1676648}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4610746654156704}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1092569260073304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2555,9 +2586,11 @@ GameObject:
   - component: {fileID: 1015740744}
   - component: {fileID: 1015740742}
   - component: {fileID: 423457264782436544}
+  - component: {fileID: 4585069611447225205}
+  - component: {fileID: 8659303505382702403}
   m_Layer: 0
   m_Name: Personagens
-  m_TagString: Untagged
+  m_TagString: Jogador
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2597,6 +2630,7 @@ Transform:
   - {fileID: 4789171435226948}
   - {fileID: 4188126387179866}
   - {fileID: 4925541059680036}
+  - {fileID: 1056943226}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2663,7 +2697,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d57f2ad549dc0489cf862a90d95859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 10
+  Velocidade: 10
+  MascaraChao:
+    serializedVersion: 2
+    m_Bits: 64
+  TextoGameOver: {fileID: 0}
+  Vida: 100
+  ScriptInterface: {fileID: 0}
+  SomDano: {fileID: 8300000, guid: 73036bccaa8b85d4a98968338b6e5d45, type: 3}
+  SomGameOver: {fileID: 8300000, guid: 563bc0aa5d7ba344b87c21bbc61c5794, type: 3}
 --- !u!114 &423457264782436544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2674,6 +2716,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17ea1c55246c4404dae726ca3d2fc051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bala: {fileID: 5541975806816973000, guid: 79168d8099533914cbcffd8105c8bf0f, type: 3}
+  CanoDaArma: {fileID: 1056943225}
+  Delta: 0.5
+  SomTiro: {fileID: 8300000, guid: fb0f5e60bb23f55418a33d24f7571e21, type: 3}
+--- !u!114 &4585069611447225205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884102019447498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18bb066c1828a94459ce2e7b0ab8e560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8659303505382702403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884102019447498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ed73de09aea2841a75237c7b016616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1938851689004064

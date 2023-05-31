@@ -2,42 +2,68 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlaZumbi : MonoBehaviour{
-    public GameObject Jogador;
-    public float Velocidade = 5;
+public class ControlaZumbi : MonoBehaviour, IMatavel{
     private Rigidbody rigidbodyZumbi;
     private Animator animatorZumbi;
-    
+    private MovimentoPersonagem movimentoInimigo;
+    private AnimacaoPersonagem animacaoInimigo;
+    private Vector3 posicaoAleatoria;
+    private Vector3 direcao;
+    private float contadorVagar;
+    private float tempoEntrePosicoesVagar = 4;
+    public GameObject Jogador;    
+    public AudioClip SomMorteZumbi;
+
+    public Status StatusZumbi;
     // Start is called before the first frame update
     void Start(){
         Jogador = GameObject.FindWithTag("Jogador");
-        int seedTipoZumbi = Random.Range(1, 28);
-        transform.GetChild(seedTipoZumbi).gameObject.SetActive(true);
-        rigidbodyZumbi = GetComponent<Rigidbody>();
-        animatorZumbi = GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update(){
-        
+        aleatorizarZumbi();
+        movimentoInimigo = GetComponent<MovimentoPersonagem>();
+        animacaoInimigo = GetComponent<AnimacaoPersonagem>();
+        StatusZumbi = GetComponent<Status>();
     }
 
     void FixedUpdate(){
         float distancia = Vector3.Distance(transform.position, Jogador.transform.position);
-        Vector3 direcao = Jogador.transform.position - transform.position;
-        Quaternion rotacao = Quaternion.LookRotation(direcao);
+        
+        movimentoInimigo.Rotacionar(direcao);
+        animacaoInimigo.Movimentar(direcao.magnitude);
 
-        rigidbodyZumbi.MoveRotation(rotacao);
-
-        if(distancia > 2.5){
-            rigidbodyZumbi.MovePosition(
-                rigidbodyZumbi.position + direcao.normalized * Velocidade * Time.deltaTime
-            );
-            
-            animatorZumbi.SetBool("atacando", false);
+        if(distancia > 20){
+            Vagar();
+            animacaoInimigo.Atacar(false);
+        } else  if(distancia > 2.5){
+            direcao = Jogador.transform.position - transform.position;
+            movimentoInimigo.Movimentar(direcao, StatusZumbi.Velocidade);
+            animacaoInimigo.Atacar(false);
         } else{
-            animatorZumbi.SetBool("atacando", true);
+            animacaoInimigo.Atacar(true);
         }
+    }
+
+    void Vagar(){
+        contadorVagar -= Time.deltaTime;
+        if(contadorVagar <= 0){
+            posicaoAleatoria = AleatorizarPosicao();
+            contadorVagar += tempoEntrePosicoesVagar;
+        }
+        
+        bool pertoSuficiente = Vector3.Distance(transform.position, posicaoAleatoria) <= 0.05;
+
+        if(pertoSuficiente == false){
+            direcao = posicaoAleatoria - transform.position;
+            movimentoInimigo.Movimentar(direcao, StatusZumbi.Velocidade);
+        }
+    }
+
+    Vector3 AleatorizarPosicao(){
+        Vector3 posicao =  Random.insideUnitSphere * 10;
+        posicao += transform.position;
+        posicao.y = transform.position.y;
+
+        return posicao;
+
     }
 
     void AtacaJogador(){
@@ -45,6 +71,22 @@ public class ControlaZumbi : MonoBehaviour{
         Jogador.GetComponent<ControlaJogador>().TomarDano(dano);
     }
 
+    void aleatorizarZumbi(){
+        int seedTipoZumbi = Random.Range(1, 28);
+        transform.GetChild(seedTipoZumbi).gameObject.SetActive(true);
+    }
 
+    public void TomarDano(int dano)
+    {
+        StatusZumbi.Vida -= dano;
+        if(StatusZumbi.Vida <= 0){
+            Morrer();
+        }
+    }
 
+    public void Morrer()
+    {
+        ControlaAudio.instanciaControleAudio.PlayOneShot(SomMorteZumbi);
+        Destroy(gameObject);
+    }
 }

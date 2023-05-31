@@ -19,10 +19,8 @@ public class ControlaBala : MonoBehaviour
 
     void OnTriggerEnter(Collider objetoDeColisao){
         if(objetoDeColisao.tag == "Inimigo"){
-            ControlaAudio.instanciaControleAudio.PlayOneShot(SomMorteZumbi);
-            Destroy(objetoDeColisao.gameObject);
+            objetoDeColisao.GetComponent<ControlaZumbi>().TomarDano(1);
         }
-        
         Destroy(gameObject);
     }
 }

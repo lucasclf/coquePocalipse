@@ -31,3 +31,11 @@
 - Iluminação.
 ### Changed
 - Aumentado o tamanho do cenário.
+
+## [1.2.1] | 2023-05-31
+### Added
+- Incluido função de vagar nos zumbis que estão longe do jogador.
+- Criada trava para que os zumbis não surjam na frente do jogador.
+### Changed
+- Cenário ampliado.
+- Alterada a quantidade de geradores de zumbi.

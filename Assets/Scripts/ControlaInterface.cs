@@ -10,7 +10,7 @@ public class ControlaInterface : MonoBehaviour
     // Start is called before the first frame update
     void Start(){
         scriptJogador = GameObject.FindWithTag("Jogador").GetComponent<ControlaJogador>();
-        SliderVidaJogador.maxValue = scriptJogador.Vida;
+        SliderVidaJogador.maxValue = scriptJogador.statusJogador.Vida;
         AtualizarSlideVidaJogador();
     }
 
@@ -20,6 +20,6 @@ public class ControlaInterface : MonoBehaviour
     }
 
     public void AtualizarSlideVidaJogador(){
-        SliderVidaJogador.value = scriptJogador.Vida;
+        SliderVidaJogador.value = scriptJogador.statusJogador.Vida;
     }
 }
