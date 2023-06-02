@@ -38,6 +38,7 @@ public class ControlaZumbi : MonoBehaviour, IMatavel{
             movimentoInimigo.Movimentar(direcao, StatusZumbi.Velocidade);
             animacaoInimigo.Atacar(false);
         } else{
+            direcao = Jogador.transform.position - transform.position;
             animacaoInimigo.Atacar(true);
         }
     }

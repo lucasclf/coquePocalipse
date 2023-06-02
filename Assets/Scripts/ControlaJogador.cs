@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ControlaJogador : MonoBehaviour, IMatavel {
     private Vector3 direcao;
@@ -10,7 +9,7 @@ public class ControlaJogador : MonoBehaviour, IMatavel {
     public Status statusJogador;
     public ControlaInterface ScriptInterface; 
     public AudioClip SomDano;
-    public AudioClip SomGameOver;
+
     public LayerMask MascaraChao;
     public GameObject TextoGameOver;
 
@@ -26,20 +25,11 @@ public class ControlaJogador : MonoBehaviour, IMatavel {
 
         direcao = new Vector3(eixoX, 0, eixoZ);
         animacaoPersonagemScript.Movimentar(direcao.magnitude);
-
-        reiniciaJogo();
     }
 
     void FixedUpdate(){
         movimentoJogadorScript.Movimentar(direcao, statusJogador.Velocidade);
         movimentoJogadorScript.RotacionarJogador(MascaraChao);
-    }
-
-    void reiniciaJogo(){
-        if(statusJogador.Vida <= 0 && Input.GetButtonDown("Fire1")){
-            SceneManager.LoadScene("Menu");
-            Time.timeScale = 1;
-        }
     }
 
     public void TomarDano(int dano){
@@ -53,10 +43,6 @@ public class ControlaJogador : MonoBehaviour, IMatavel {
     }
 
     public void Morrer(){
-        Time.timeScale = 0; 
-            AudioSource audio = ControlaAudio.instanciaControleAudio.GetComponent<AudioSource>();
-            audio.clip = SomGameOver;
-            audio.Play();
-            TextoGameOver.SetActive(true);
+        ScriptInterface.GameOver();
     }
 }

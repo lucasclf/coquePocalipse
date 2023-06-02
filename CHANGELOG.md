@@ -39,3 +39,12 @@
 ### Changed
 - Cenário ampliado.
 - Alterada a quantidade de geradores de zumbi.
+
+## [1.2.2] | 2023-06
+### Added
+- Inserido painel de GameOver.
+- Inserido pontuação por tempo de sobrevivência.
+### Changed
+
+### Fixed
+- Melhoria das colisões.
