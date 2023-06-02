@@ -44,7 +44,6 @@
 ### Added
 - Inserido painel de GameOver.
 - Inserido pontuação por tempo de sobrevivência.
-### Changed
-
 ### Fixed
 - Melhoria das colisões.
+- Melhoria na rotação dos Zumbis.
