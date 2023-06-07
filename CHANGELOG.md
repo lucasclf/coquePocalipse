@@ -8,6 +8,7 @@
 - Alteração na  criação de zumbis.
 ### Fixed
 - Bug de renderização de texturas no hotel abandonado.
+- Bug de som no menu principal.
 ---
 ## [1.2.2] | 2023-06-02
 ### Added
