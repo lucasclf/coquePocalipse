@@ -5,15 +5,26 @@ using UnityEngine;
 public class ControlaAudio : MonoBehaviour
 {
     private AudioSource controleAudio;
-    public static AudioSource instanciaControleAudio;
+    public static bool Muted;
+    public static AudioSource InstanciaControleAudio;
 
     void Awake(){
         controleAudio = GetComponent<AudioSource>();
-        instanciaControleAudio = controleAudio;
+        InstanciaControleAudio = controleAudio;
+        Debug.Log("ControlaAudio Awake muted: " + Muted);
+    }
+
+    void Start(){
+        AlteraVolume();
     }
 
     void FixedUpdate(){
-        if(MainMenu.sound == false){
+        
+    }
+
+    public void AlteraVolume(){
+        Debug.Log("ControlaAudio AlteraVolume MUTED: " + Muted);
+        if(Muted == true){
             controleAudio.volume = 0;
         } else {
             controleAudio.volume = 1;

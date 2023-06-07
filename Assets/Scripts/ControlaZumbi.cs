@@ -10,9 +10,12 @@ public class ControlaZumbi : MonoBehaviour, IMatavel{
     private Vector3 posicaoAleatoria;
     private Vector3 direcao;
     private float contadorVagar;
+    private float porcentagemDrop = 0.1f;
     private float tempoEntrePosicoesVagar = 4;
+    private ControlaInterface controlaInterfaceScript;
     public GameObject Jogador;    
     public AudioClip SomMorteZumbi;
+    public GameObject KitMedico;
 
     public Status StatusZumbi;
     // Start is called before the first frame update
@@ -22,6 +25,7 @@ public class ControlaZumbi : MonoBehaviour, IMatavel{
         movimentoInimigo = GetComponent<MovimentoPersonagem>();
         animacaoInimigo = GetComponent<AnimacaoPersonagem>();
         StatusZumbi = GetComponent<Status>();
+        controlaInterfaceScript = GameObject.FindObjectOfType(typeof(ControlaInterface)) as ControlaInterface;
     }
 
     void FixedUpdate(){
@@ -64,7 +68,6 @@ public class ControlaZumbi : MonoBehaviour, IMatavel{
         posicao.y = transform.position.y;
 
         return posicao;
-
     }
 
     void AtacaJogador(){
@@ -87,7 +90,15 @@ public class ControlaZumbi : MonoBehaviour, IMatavel{
 
     public void Morrer()
     {
-        ControlaAudio.instanciaControleAudio.PlayOneShot(SomMorteZumbi);
+        ControlaAudio.InstanciaControleAudio.PlayOneShot(SomMorteZumbi);
         Destroy(gameObject);
+        DerrubarItem();
+        controlaInterfaceScript.AtualizarContadorDeMortos();
+    }
+
+    void DerrubarItem(){
+        if(Random.value <= porcentagemDrop){
+            Instantiate(KitMedico, transform.position, Quaternion.identity);
+        }
     }
 }

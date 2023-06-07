@@ -10,10 +10,16 @@ public class GeradorZumbis : MonoBehaviour {
     private float radiusGerador = 3;
     private float distanciaGeracao = 20;
     private GameObject jogador;
+    private int quantidadeMaximaZumbi = 2;
+    private int quantidadeAtualZumbi;
     public LayerMask LayerZumbi;
 
     void Start(){
         jogador = GameObject.FindWithTag("Jogador");
+
+        for(int i = 0; i < quantidadeMaximaZumbi; i++){
+            StartCoroutine(GerarNovoZumbi());
+        }
     }
 
     // Update is called once per frame
@@ -21,7 +27,9 @@ public class GeradorZumbis : MonoBehaviour {
         float distanciaJogador = Vector3.Distance(transform.position, jogador.transform.position);
         contadorTempo += Time.deltaTime;
 
-        if(contadorTempo >= TempoGeradorZumbi && distanciaJogador > distanciaGeracao){
+        if(contadorTempo >= TempoGeradorZumbi && 
+        distanciaJogador > distanciaGeracao &&
+        quantidadeAtualZumbi < quantidadeMaximaZumbi){
             StartCoroutine(GerarNovoZumbi());
             contadorTempo = 0;
         }
@@ -44,6 +52,7 @@ public class GeradorZumbis : MonoBehaviour {
         }
 
         Instantiate(Zumbi, posicao, transform.rotation);
+        quantidadeAtualZumbi++; 
     }
 
     Vector3 AleatorizarPosicao(){

@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlaJogador : MonoBehaviour, IMatavel {
+public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel {
     private Vector3 direcao;
     private MovimentoJogador movimentoJogadorScript;
     private AnimacaoPersonagem animacaoPersonagemScript;
     public Status statusJogador;
     public ControlaInterface ScriptInterface; 
     public AudioClip SomDano;
+    public AudioClip SomCura;
 
     public LayerMask MascaraChao;
     public GameObject TextoGameOver;
@@ -36,7 +37,7 @@ public class ControlaJogador : MonoBehaviour, IMatavel {
         statusJogador.Vida -= dano;
         ScriptInterface.AtualizarSlideVidaJogador();
 
-        ControlaAudio.instanciaControleAudio.PlayOneShot(SomDano);
+        ControlaAudio.InstanciaControleAudio.PlayOneShot(SomDano);
         if(statusJogador.Vida <= 0){
             Morrer();
         }
@@ -44,5 +45,16 @@ public class ControlaJogador : MonoBehaviour, IMatavel {
 
     public void Morrer(){
         ScriptInterface.GameOver();
+    }
+
+    public void CurarVida(int cura){
+        statusJogador.Vida += cura;
+        if(statusJogador.Vida > statusJogador.VidaInicial){
+            statusJogador.Vida = statusJogador.VidaInicial;
+        }
+        ScriptInterface.AtualizarSlideVidaJogador();
+
+        ControlaAudio.InstanciaControleAudio.PlayOneShot(SomCura);
+        
     }
 }

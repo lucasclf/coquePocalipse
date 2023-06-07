@@ -25,7 +25,7 @@ public class ControlaArma : MonoBehaviour
     void Update(){
         if(Input.GetButton("Fire1")){
             if(tempoInicial > proximoTiro) {
-                ControlaAudio.instanciaControleAudio.PlayOneShot(SomTiro);
+                ControlaAudio.InstanciaControleAudio.PlayOneShot(SomTiro);
                 atirar();
             }
         }
