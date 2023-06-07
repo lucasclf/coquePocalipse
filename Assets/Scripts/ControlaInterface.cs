@@ -9,12 +9,14 @@ public class ControlaInterface : MonoBehaviour
     private ControlaJogador scriptJogador;
     private float tempoPontuacaoSalvo;
     private int[] tempoAtual;
+    private int contadorDeMortes;
     public Slider SliderVidaJogador;
     public GameObject PainelGameOver;
     public AudioClip SomGameOver;
     public Text TextoRankTempo;
     public Text TextoRankTempoMáximo;
     public Text TextoTempoDeJogo;
+    public Text TextoContadorMortes;
 
     // Start is called before the first frame update
     void Start(){
@@ -27,6 +29,7 @@ public class ControlaInterface : MonoBehaviour
 
     void FixedUpdate(){
         MontarTextoTempo();
+        MontarTextoContadorMortes();
     }
 
     public void AtualizarSlideVidaJogador(){
@@ -35,7 +38,7 @@ public class ControlaInterface : MonoBehaviour
 
     public void GameOver(){
         Time.timeScale = 0; 
-        AudioSource audio = ControlaAudio.instanciaControleAudio.GetComponent<AudioSource>();
+        AudioSource audio = ControlaAudio.InstanciaControleAudio.GetComponent<AudioSource>();
         audio.clip = SomGameOver;
         audio.Play();
         PainelGameOver.SetActive(true);
@@ -64,10 +67,10 @@ public class ControlaInterface : MonoBehaviour
 
         TextoRankTempo.text = minutosAtuais <= 0 ? 
             string.Format(
-                "Você sobreviveu por {0} segundos!", segundosAtuais
+                "Você sobreviveu por {0} segundos e matou {1} criaturas!", segundosAtuais, contadorDeMortes
             ) : 
             string.Format(
-                "Você sobreviveu por {0} minutos e {1} segundos!", minutosAtuais, segundosAtuais
+                "Você sobreviveu por {0} minutos e {1} segundos e matou {1} criaturas!", minutosAtuais, segundosAtuais, contadorDeMortes
             );
         
         TextoRankTempoMáximo.text = minutosRecord <= 0 ?
@@ -75,7 +78,7 @@ public class ControlaInterface : MonoBehaviour
             "Seu melhor tempo é de {0}  segundos!", segundosRecord
         ) :
         string.Format(
-            "Seu melhor tempo é de {0} minuots e {1} segundos!", minutosRecord, segundosRecord
+            "Seu melhor tempo é de {0} minutos e {1} segundos!", minutosRecord, segundosRecord
         );
     }
 
@@ -87,11 +90,19 @@ public class ControlaInterface : MonoBehaviour
         TextoTempoDeJogo.text = string.Format("{0}:{1}", minutosAtuais, segundosAtuais);
     }
 
+    private void MontarTextoContadorMortes(){
+        TextoContadorMortes.text = string.Format("x {0}", contadorDeMortes);
+    }
+
     private int[] ConverterTempo(float tempo){
         int minutos = (int)(tempo / 60);
         int segundos = (int)(tempo % 60);
 
         return new int[] {minutos, segundos};
+    }
+
+    public void AtualizarContadorDeMortos(){
+        contadorDeMortes++;
     }
 
 }
