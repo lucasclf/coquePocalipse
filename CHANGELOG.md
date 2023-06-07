@@ -1,6 +1,51 @@
 # Change Log
-## [1.0.0] | 2023-05-22
-- Lançado o MVP do projeto.
+## [1.2.X] | 2023-07-XX
+### Added
+- Inclusão de kit médico.
+- Inclusão de contador de zumbis mortos.
+### Changed
+- Melhoria na lógica de som.
+- Alteração na  criação de zumbis.
+### Fixed
+- Bug de renderização de texturas no hotel abandonado.
+---
+## [1.2.2] | 2023-06-02
+### Added
+- Inserido painel de GameOver.
+- Inserido pontuação por tempo de sobrevivência.
+### Fixed
+- Melhoria das colisões.
+- Melhoria na rotação dos Zumbis.
+---
+## [1.2.1] | 2023-05-31
+### Added
+- Incluido função de vagar nos zumbis que estão longe do jogador.
+- Criada trava para que os zumbis não surjam na frente do jogador.
+### Changed
+- Cenário ampliado.
+- Alterada a quantidade de geradores de zumbi.
+---
+## [1.2.0] | 2023-05-30
+### Added
+- Iluminação.
+### Changed
+- Aumentado o tamanho do cenário.
+---
+## [1.1.1] | 2023-05-29
+### Added
+- Inserção de audio de game over.
+### Changed
+- Alteração do audio de jogo para um som mais baixo e amigavel.
+---
+## [1.1.0] | 2023-05-29
+### Added
+- Inserção de audio.
+---
+## [1.0.2] | 2023-05-25
+### Added
+- Sistema de vida.
+### Fixed
+- Correção de bugs fisicos.
 ---
 ## [1.0.1] | 2023-05-24 
 ### Added
@@ -10,40 +55,15 @@
 ### Fixed
 - Correção de bugs fisicos.
 ---
-## [1.0.2] | 2023-05-25
-### Added
-- Sistema de vida.
-### Fixed
-- Correção de bugs fisicos.
+## [1.0.0] | 2023-05-22
+- Lançado o MVP do projeto.
 ---
-## [1.1.0] | 2023-05-29
-### Added
-- Inserção de audio.
 
-## [1.1.1] | 2023-05-29
-### Added
-- Inserção de audio de game over.
-### Changed
-- Alteração do audio de jogo para um som mais baixo e amigavel.
 
-## [1.2.0] | 2023-05-30
-### Added
-- Iluminação.
-### Changed
-- Aumentado o tamanho do cenário.
 
-## [1.2.1] | 2023-05-31
-### Added
-- Incluido função de vagar nos zumbis que estão longe do jogador.
-- Criada trava para que os zumbis não surjam na frente do jogador.
-### Changed
-- Cenário ampliado.
-- Alterada a quantidade de geradores de zumbi.
 
-## [1.2.2] | 2023-06
-### Added
-- Inserido painel de GameOver.
-- Inserido pontuação por tempo de sobrevivência.
-### Fixed
-- Melhoria das colisões.
-- Melhoria na rotação dos Zumbis.
+
+
+
+
+
