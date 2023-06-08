@@ -2594,7 +2594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4610746654156704
 Transform:
   m_ObjectHideFlags: 0
@@ -2697,15 +2697,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d57f2ad549dc0489cf862a90d95859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocidade: 10
+  statusJogador: {fileID: 0}
+  ScriptInterface: {fileID: 0}
+  SomDano: {fileID: 8300000, guid: 73036bccaa8b85d4a98968338b6e5d45, type: 3}
+  SomCura: {fileID: 0}
   MascaraChao:
     serializedVersion: 2
     m_Bits: 64
   TextoGameOver: {fileID: 0}
-  Vida: 100
-  ScriptInterface: {fileID: 0}
-  SomDano: {fileID: 8300000, guid: 73036bccaa8b85d4a98968338b6e5d45, type: 3}
-  SomGameOver: {fileID: 8300000, guid: 563bc0aa5d7ba344b87c21bbc61c5794, type: 3}
 --- !u!114 &423457264782436544
 MonoBehaviour:
   m_ObjectHideFlags: 0

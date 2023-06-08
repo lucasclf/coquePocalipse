@@ -46,7 +46,6 @@ public class GeradorZumbis : MonoBehaviour {
     void OnDrawGizmos(){
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position,radiusGerador);
-
     }
 
     IEnumerator GerarNovoZumbi(){

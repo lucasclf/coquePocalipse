@@ -1,4 +1,7 @@
 # Change Log
+## [1.3.0] | 2023-06-08
+### Added
+- Inclusão de chefão de fase.
 ## [1.2.3] | 2023-06-07
 ### Added
 - Inclusão de kit médico.

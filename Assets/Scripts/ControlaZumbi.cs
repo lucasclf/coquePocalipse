@@ -85,7 +85,7 @@ public class ControlaZumbi : MonoBehaviour, IMatavel{
     }
 
     void aleatorizarZumbi(){
-        int seedTipoZumbi = Random.Range(1, 28);
+        int seedTipoZumbi = Random.Range(1, transform.childCount);
         transform.GetChild(seedTipoZumbi).gameObject.SetActive(true);
     }
 

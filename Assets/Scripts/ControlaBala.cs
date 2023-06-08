@@ -18,8 +18,17 @@ public class ControlaBala : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider objetoDeColisao){
+
+        switch(objetoDeColisao.tag){
+            case "Inimigo":
+                objetoDeColisao.GetComponent<ControlaZumbi>().TomarDano(1);
+                break;
+            case "Chefe":
+                objetoDeColisao.GetComponent<ControlaChefe>().TomarDano(1);
+                break;
+        }
         if(objetoDeColisao.tag == "Inimigo"){
-            objetoDeColisao.GetComponent<ControlaZumbi>().TomarDano(1);
+            
         }
         Destroy(gameObject);
     }
