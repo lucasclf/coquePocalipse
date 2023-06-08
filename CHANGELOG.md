@@ -1,4 +1,8 @@
 # Change Log
+## [1.3.1] | 2023-06-XX
+### Fixed
+- Correção da vida do Chefe.
+- Correção da bala utilizada.
 ## [1.3.0] | 2023-06-08
 ### Added
 - Inclusão de chefão de fase.
