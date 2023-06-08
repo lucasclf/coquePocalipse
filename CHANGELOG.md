@@ -1,5 +1,7 @@
 # Change Log
 ## [1.3.1] | 2023-06-XX
+### Changed
+- Melhorias no Chefe;
 ### Fixed
 - Correção da vida do Chefe.
 - Correção da bala utilizada.
