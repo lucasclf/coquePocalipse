@@ -13,9 +13,12 @@ public class ControlaZumbi : MonoBehaviour, IMatavel{
     private float porcentagemDrop = 0.1f;
     private float tempoEntrePosicoesVagar = 4;
     private ControlaInterface controlaInterfaceScript;
+    private bool morto = false;
     public GameObject Jogador;    
     public AudioClip SomMorteZumbi;
     public GameObject KitMedico;
+    [HideInInspector]
+    public GeradorZumbis GeradorMae;
 
     public Status StatusZumbi;
     // Start is called before the first frame update
@@ -30,28 +33,34 @@ public class ControlaZumbi : MonoBehaviour, IMatavel{
 
     void FixedUpdate(){
         float distancia = Vector3.Distance(transform.position, Jogador.transform.position);
-        
-        movimentoInimigo.Rotacionar(direcao);
-        animacaoInimigo.Movimentar(direcao.magnitude);
+        if(!morto){
+            movimentoInimigo.Rotacionar(direcao);
+            animacaoInimigo.Movimentar(direcao.magnitude);
 
-        if(distancia > 20){
-            Vagar();
-            animacaoInimigo.Atacar(false);
-        } else  if(distancia > 2.5){
-            direcao = Jogador.transform.position - transform.position;
-            movimentoInimigo.Movimentar(direcao, StatusZumbi.Velocidade);
-            animacaoInimigo.Atacar(false);
-        } else{
-            direcao = Jogador.transform.position - transform.position;
-            animacaoInimigo.Atacar(true);
+            if(distancia > 20){
+                Vagar();
+                animacaoInimigo.Atacar(false);
+            } else  if(distancia > 2.5){
+                direcao = Jogador.transform.position - transform.position;
+                movimentoInimigo.Movimentar(direcao, StatusZumbi.Velocidade);
+                animacaoInimigo.Atacar(false);
+            } else{
+                direcao = Jogador.transform.position - transform.position;
+                animacaoInimigo.Atacar(true);
+            }   
         }
+
+        if(morto && distancia > 20){
+            Destroy(gameObject);
+        }
+        
     }
 
     void Vagar(){
         contadorVagar -= Time.deltaTime;
         if(contadorVagar <= 0){
             posicaoAleatoria = AleatorizarPosicao();
-            contadorVagar += tempoEntrePosicoesVagar;
+            contadorVagar += tempoEntrePosicoesVagar + Random.Range(-2f, 1f);
         }
         
         bool pertoSuficiente = Vector3.Distance(transform.position, posicaoAleatoria) <= 0.05;
@@ -91,14 +100,24 @@ public class ControlaZumbi : MonoBehaviour, IMatavel{
     public void Morrer()
     {
         ControlaAudio.InstanciaControleAudio.PlayOneShot(SomMorteZumbi);
-        Destroy(gameObject);
+        animacaoInimigo.Morrer();
+
         DerrubarItem();
+        Destroy(gameObject, 15);
+
         controlaInterfaceScript.AtualizarContadorDeMortos();
+        GeradorMae.DiminuirQuantidadeZumbisVivos();
+
+        movimentoInimigo.Morrer();
+        morto = true;
     }
 
     void DerrubarItem(){
         if(Random.value <= porcentagemDrop){
-            Instantiate(KitMedico, transform.position, Quaternion.identity);
+            Vector3 distanciaGeracao = transform.position;
+            distanciaGeracao.x += 1;
+            distanciaGeracao.z += 1;
+            Instantiate(KitMedico, distanciaGeracao, Quaternion.identity);
         }
     }
 }

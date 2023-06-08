@@ -20,4 +20,9 @@ public class MovimentoPersonagem : MonoBehaviour
         Quaternion rotacao = Quaternion.LookRotation(direcao);
         rigidbodyPersonagem.MoveRotation(rotacao);
     }
+
+    public void Morrer(){
+        rigidbodyPersonagem.velocity = Vector3.zero;
+        GetComponent<Collider>().enabled = false;
+    }
 }

@@ -1,14 +1,18 @@
 # Change Log
-## [1.2.X] | 2023-07-XX
+## [1.2.3] | 2023-06-07
 ### Added
 - Inclusão de kit médico.
 - Inclusão de contador de zumbis mortos.
+- Inserido aumento progressivo de dificuldade.
+- Incluido cursor próprio.
+- Incluida animação de morte do zumbi e permanência dos corpos.
 ### Changed
 - Melhoria na lógica de som.
 - Alteração na  criação de zumbis.
 ### Fixed
 - Bug de renderização de texturas no hotel abandonado.
 - Bug de som no menu principal.
+- Corrigida fluidez entre as posições de ataque e parada do zumbi.
 ---
 ## [1.2.2] | 2023-06-02
 ### Added

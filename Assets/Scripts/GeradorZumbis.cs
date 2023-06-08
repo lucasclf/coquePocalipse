@@ -12,6 +12,8 @@ public class GeradorZumbis : MonoBehaviour {
     private GameObject jogador;
     private int quantidadeMaximaZumbi = 2;
     private int quantidadeAtualZumbi;
+    private float tempoAumentoDificuldade = 10;
+    private int dificuldadeAtual = 1;
     public LayerMask LayerZumbi;
 
     void Start(){
@@ -33,6 +35,12 @@ public class GeradorZumbis : MonoBehaviour {
             StartCoroutine(GerarNovoZumbi());
             contadorTempo = 0;
         }
+
+
+        if(Time.timeSinceLevelLoad > tempoAumentoDificuldade * dificuldadeAtual){
+            quantidadeMaximaZumbi += dificuldadeAtual;
+            dificuldadeAtual++;
+        }
     }
 
     void OnDrawGizmos(){
@@ -51,8 +59,13 @@ public class GeradorZumbis : MonoBehaviour {
             yield return null;
         }
 
-        Instantiate(Zumbi, posicao, transform.rotation);
-        quantidadeAtualZumbi++; 
+        ControlaZumbi zumbi = Instantiate(Zumbi, posicao, transform.rotation).GetComponent<ControlaZumbi>();
+        zumbi.GeradorMae = this; 
+        quantidadeAtualZumbi++;
+    }
+
+    public void DiminuirQuantidadeZumbisVivos(){
+        quantidadeAtualZumbi--;
     }
 
     Vector3 AleatorizarPosicao(){
