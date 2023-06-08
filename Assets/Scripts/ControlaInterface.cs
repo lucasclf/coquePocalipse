@@ -17,6 +17,7 @@ public class ControlaInterface : MonoBehaviour
     public Text TextoRankTempoMáximo;
     public Text TextoTempoDeJogo;
     public Text TextoContadorMortes;
+    public Text TextoChefe;
 
     // Start is called before the first frame update
     void Start(){
@@ -103,6 +104,31 @@ public class ControlaInterface : MonoBehaviour
 
     public void AtualizarContadorDeMortos(){
         contadorDeMortes++;
+    }
+
+    public void AparecerTextoChefe(string texto){
+        TextoChefe.text = texto;
+        StartCoroutine(DesapareceTexto(2, TextoChefe));
+    }
+
+    IEnumerator DesapareceTexto(float tempoSumico, Text textoParaSumir){
+        Color corTexto = textoParaSumir.color;
+        corTexto.a = 1;
+        textoParaSumir.color = corTexto;
+        yield return new WaitForSeconds(1);
+        float contador = 0;
+        textoParaSumir.gameObject.SetActive(true);
+        while(textoParaSumir.color.a > 0){
+            contador += Time.deltaTime / tempoSumico;
+            corTexto.a = Mathf.Lerp(1, 0, contador);
+            textoParaSumir.color = corTexto;
+
+            if(textoParaSumir.color.a < 0){
+                textoParaSumir.gameObject.SetActive(false);
+            }
+
+            yield return null;
+        }
     }
 
 }

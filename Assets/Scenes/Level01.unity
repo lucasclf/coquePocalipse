@@ -3798,6 +3798,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 423457264782436544, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
+      propertyPath: Bala
+      value: 
+      objectReference: {fileID: 4136081461608420889, guid: b09ef91acde49764db8dfbb4242ca07a, type: 3}
+    - target: {fileID: 423457264782436544, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -6968,7 +6972,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 36

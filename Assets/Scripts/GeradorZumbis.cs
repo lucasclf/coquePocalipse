@@ -22,6 +22,7 @@ public class GeradorZumbis : MonoBehaviour {
         for(int i = 0; i < quantidadeMaximaZumbi; i++){
             StartCoroutine(GerarNovoZumbi());
         }
+
     }
 
     // Update is called once per frame
