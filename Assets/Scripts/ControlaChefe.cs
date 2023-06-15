@@ -17,6 +17,7 @@ public class ControlaChefe : MonoBehaviour, IMatavel
     public Slider sliderVidaChef;
     public Image imageSlider;
     public Color CorVidaMaxima, CorVidaMinima;
+    public GameObject ParticulaSangue;
 
     void Start(){
         jogador = GameObject.FindWithTag("Jogador").transform;
@@ -78,6 +79,10 @@ public class ControlaChefe : MonoBehaviour, IMatavel
         distanciaGeracao.x += 1;
         distanciaGeracao.z += 1;
         Instantiate(KitMedico, distanciaGeracao, Quaternion.identity);
+    }
+
+    public void GerarSangue(Vector3 posicao, Quaternion rotacao){
+        Instantiate(ParticulaSangue, posicao, rotacao);
     }
 
     void AtualizarInterface(){

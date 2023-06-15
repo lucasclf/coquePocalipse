@@ -19,6 +19,7 @@ public class ControlaZumbi : MonoBehaviour, IMatavel{
     public GameObject KitMedico;
     [HideInInspector]
     public GeradorZumbis GeradorMae;
+    public GameObject ParticulaSangue;
 
     public Status StatusZumbi;
     // Start is called before the first frame update
@@ -95,6 +96,10 @@ public class ControlaZumbi : MonoBehaviour, IMatavel{
         if(StatusZumbi.Vida <= 0){
             Morrer();
         }
+    }
+
+    public void GerarSangue(Vector3 posicao, Quaternion rotacao){
+        Instantiate(ParticulaSangue, posicao, rotacao);
     }
 
     public void Morrer()

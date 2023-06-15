@@ -1,7 +1,7 @@
 # Change Log
-## [1.3.2] | 2023-06-XX
+## [2.0.0] | 2023-06-15
 ### Added
-- Melhoria nas particulas.
+- Inserção de particulas de fogo e sangue.
 ### Fixed
 - Aumento do tempo de duração da frase do Boss.
 ## [1.3.1] | 2023-06-15

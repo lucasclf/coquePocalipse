@@ -18,13 +18,17 @@ public class ControlaBala : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider objetoDeColisao){
-
+        Quaternion rotacaoOpostaBala = Quaternion.LookRotation(-transform.forward);
         switch(objetoDeColisao.tag){
             case "Inimigo":
-                objetoDeColisao.GetComponent<ControlaZumbi>().TomarDano(1);
+                ControlaZumbi zumbi = objetoDeColisao.GetComponent<ControlaZumbi>();
+                zumbi.TomarDano(1);
+                zumbi.GerarSangue(transform.position, rotacaoOpostaBala);
                 break;
             case "Chefe":
-                objetoDeColisao.GetComponent<ControlaChefe>().TomarDano(1);
+                ControlaChefe chefe = objetoDeColisao.GetComponent<ControlaChefe>();
+                chefe.TomarDano(1);
+                chefe.GerarSangue(transform.position, rotacaoOpostaBala);
                 break;
         }
         if(objetoDeColisao.tag == "Inimigo"){
