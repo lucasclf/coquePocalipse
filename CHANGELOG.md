@@ -1,4 +1,7 @@
 # Change Log
+## [2.0.1] | 2023-06-15
+### Fixed
+- Correção do texto de game over.
 ## [2.0.0] | 2023-06-15
 ### Added
 - Inserção de particulas de fogo e sangue.

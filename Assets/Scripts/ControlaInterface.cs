@@ -65,13 +65,14 @@ public class ControlaInterface : MonoBehaviour
 
         int minutosRecord = (int)(tempoPontuacaoSalvo / 60);
         int segundosRecord = (int)(tempoPontuacaoSalvo % 60);
+        Debug.Log(string.Format("GameOver: {0}", contadorDeMortes));
 
         TextoRankTempo.text = minutosAtuais <= 0 ? 
             string.Format(
                 "Você sobreviveu por {0} segundos e matou {1} criaturas!", segundosAtuais, contadorDeMortes
             ) : 
             string.Format(
-                "Você sobreviveu por {0} minutos e {1} segundos e matou {1} criaturas!", minutosAtuais, segundosAtuais, contadorDeMortes
+                "Você sobreviveu por {0} minutos e {1} segundos e matou {2} criaturas!", minutosAtuais, segundosAtuais, contadorDeMortes
             );
         
         TextoRankTempoMáximo.text = minutosRecord <= 0 ?
@@ -93,6 +94,7 @@ public class ControlaInterface : MonoBehaviour
 
     private void MontarTextoContadorMortes(){
         TextoContadorMortes.text = string.Format("x {0}", contadorDeMortes);
+        Debug.Log(string.Format("Texto: total: {0}", contadorDeMortes));
     }
 
     private int[] ConverterTempo(float tempo){
@@ -104,6 +106,7 @@ public class ControlaInterface : MonoBehaviour
 
     public void AtualizarContadorDeMortos(){
         contadorDeMortes++;
+        Debug.Log(string.Format("Atualiza: total: {0}", contadorDeMortes));
     }
 
     public void AparecerTextoChefe(string texto){
