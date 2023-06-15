@@ -9,7 +9,7 @@ public class ControlaInterface : MonoBehaviour
     private ControlaJogador scriptJogador;
     private float tempoPontuacaoSalvo;
     private int[] tempoAtual;
-    private int contadorDeMortes;
+    private int contadorDeMortes = 0;
     public Slider SliderVidaJogador;
     public GameObject PainelGameOver;
     public AudioClip SomGameOver;
@@ -26,11 +26,11 @@ public class ControlaInterface : MonoBehaviour
         SliderVidaJogador.maxValue = scriptJogador.statusJogador.Vida;
         AtualizarSlideVidaJogador();
         tempoPontuacaoSalvo = PlayerPrefs.GetFloat("MelhorTempoSalvo");
+        MontarTextoContadorMortes();
     }
 
     void FixedUpdate(){
         MontarTextoTempo();
-        MontarTextoContadorMortes();
     }
 
     public void AtualizarSlideVidaJogador(){
@@ -65,7 +65,6 @@ public class ControlaInterface : MonoBehaviour
 
         int minutosRecord = (int)(tempoPontuacaoSalvo / 60);
         int segundosRecord = (int)(tempoPontuacaoSalvo % 60);
-        Debug.Log(string.Format("GameOver: {0}", contadorDeMortes));
 
         TextoRankTempo.text = minutosAtuais <= 0 ? 
             string.Format(
@@ -94,7 +93,6 @@ public class ControlaInterface : MonoBehaviour
 
     private void MontarTextoContadorMortes(){
         TextoContadorMortes.text = string.Format("x {0}", contadorDeMortes);
-        Debug.Log(string.Format("Texto: total: {0}", contadorDeMortes));
     }
 
     private int[] ConverterTempo(float tempo){
@@ -106,7 +104,7 @@ public class ControlaInterface : MonoBehaviour
 
     public void AtualizarContadorDeMortos(){
         contadorDeMortes++;
-        Debug.Log(string.Format("Atualiza: total: {0}", contadorDeMortes));
+        MontarTextoContadorMortes();
     }
 
     public void AparecerTextoChefe(string texto){
