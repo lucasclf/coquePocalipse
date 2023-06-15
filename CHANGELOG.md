@@ -1,4 +1,9 @@
 # Change Log
+## [1.3.2] | 2023-06-XX
+### Added
+- Melhoria nas particulas.
+### Fixed
+- Aumento do tempo de duração da frase do Boss.
 ## [1.3.1] | 2023-06-15
 ### Added
 - Inserida barra de vida para o chefe.

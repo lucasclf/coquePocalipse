@@ -108,7 +108,7 @@ public class ControlaInterface : MonoBehaviour
 
     public void AparecerTextoChefe(string texto){
         TextoChefe.text = texto;
-        StartCoroutine(DesapareceTexto(2, TextoChefe));
+        StartCoroutine(DesapareceTexto(5, TextoChefe));
     }
 
     IEnumerator DesapareceTexto(float tempoSumico, Text textoParaSumir){
