@@ -4,6 +4,7 @@
 - Alterada lógica de atualização do contador de mortes.
 ### Fixed
 - Correção do texto de game over.
+- Correção de colisão.
 ## [2.0.0] | 2023-06-15
 ### Added
 - Inserção de particulas de fogo e sangue.
