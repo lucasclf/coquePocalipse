@@ -19,8 +19,9 @@ public class ControlaMenu : MonoBehaviour
     }
 
     public void JogarJogo(){
+        Debug.Log("Jogo iniciado!");
         PlayerPrefs.SetInt("SkinDePreferencia",numeroSkin);
-        StartCoroutine(MudarCena("Level01"));
+        SceneManager.LoadScene("Level01");
     }
     public void TrocarSkin()
     {
@@ -39,18 +40,8 @@ public class ControlaMenu : MonoBehaviour
         ControlaTextoAudio();
     }
 
-    IEnumerator MudarCena(string name){
-        yield return new WaitForSeconds(0.3f);
-        SceneManager.LoadScene(name);
-    }
-
     public void SairDoJogo(){
-        StartCoroutine(Sair());
-    }
-
-    IEnumerator Sair(){
-        yield return new WaitForSeconds(0.3f);
-                Application.Quit();
+        Application.Quit();
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #endif

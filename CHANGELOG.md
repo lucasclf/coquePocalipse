@@ -1,5 +1,5 @@
 # Change Log
-## [1.3.1] | 2023-06-XX
+## [1.3.1] | 2023-06-15
 ### Added
 - Inserida barra de vida para o chefe.
 - Inserida troca de skin.
