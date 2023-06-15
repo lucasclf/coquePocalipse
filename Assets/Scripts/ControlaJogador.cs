@@ -6,20 +6,26 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel {
     private Vector3 direcao;
     private MovimentoJogador movimentoJogadorScript;
     private AnimacaoPersonagem animacaoPersonagemScript;
+    private int skinDePreferencia;
     public Status statusJogador;
     public ControlaInterface ScriptInterface; 
     public AudioClip SomDano;
     public AudioClip SomCura;
-
     public LayerMask MascaraChao;
     public GameObject TextoGameOver;
 
     void Start(){
+        skinDePreferencia = PlayerPrefs.GetInt("SkinDePreferencia");
+        TrocandoSkinDoPlayer();
         movimentoJogadorScript = GetComponent<MovimentoJogador>();
         animacaoPersonagemScript = GetComponent<AnimacaoPersonagem>();
         statusJogador = GetComponent<Status>();
     }
-    // Update is called once per frame
+    
+    public void TrocandoSkinDoPlayer(){
+        transform.GetChild(skinDePreferencia).gameObject.SetActive(true);
+    }
+
     void Update(){
         float eixoX = Input.GetAxis("Horizontal");
         float eixoZ = Input.GetAxis("Vertical");

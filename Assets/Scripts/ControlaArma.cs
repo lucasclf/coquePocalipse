@@ -15,7 +15,6 @@ public class ControlaArma : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Jogo iniciado!");
     }
 
     void FixedUpdate(){

@@ -1,7 +1,11 @@
 # Change Log
 ## [1.3.1] | 2023-06-XX
+### Added
+- Inserida barra de vida para o chefe.
+- Inserida troca de skin.
 ### Changed
-- Melhorias no Chefe;
+- Melhorias no Chefe.
+- Melhoria na tela de menu.
 ### Fixed
 - Correção da vida do Chefe.
 - Correção da bala utilizada.

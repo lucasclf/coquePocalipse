@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
 
     public void Start(){
         controlaAudioScript = GameObject.FindObjectOfType(typeof(ControlaAudio)) as ControlaAudio;
-        ControlaAudio.Muted = true;
+        ControlaAudio.MutedDeprecated = true;
     }
 
     public void PlayGame(){
@@ -24,12 +24,12 @@ public class MainMenu : MonoBehaviour
     }
 
     public void SoundControl(){
-        if(ControlaAudio.Muted == true){
+        if(ControlaAudio.MutedDeprecated == true){
             SoundText.text = "Desligar Som";
-            ControlaAudio.Muted = false;
+            ControlaAudio.MutedDeprecated = false;
         } else{
             SoundText.text = "Ligar Som";
-            ControlaAudio.Muted = true;
+            ControlaAudio.MutedDeprecated = true;
         }
         controlaAudioScript.AlteraVolume();
     }

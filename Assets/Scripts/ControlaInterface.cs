@@ -49,7 +49,7 @@ public class ControlaInterface : MonoBehaviour
     }
 
     public void Reiniciar(){
-        SceneManager.LoadScene("menu");
+        SceneManager.LoadScene("Menu");
     }
 
     void AjustarPontuacao(){
